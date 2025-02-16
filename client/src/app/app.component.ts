@@ -7,7 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 @Component({
   selector: 'app-root',
   standalone: true, 
-  imports: [HeaderComponent, ShopComponent, MatPaginatorModule, RouterOutlet], 
+  imports: [HeaderComponent, MatPaginatorModule, RouterOutlet], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
