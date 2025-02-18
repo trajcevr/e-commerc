@@ -24,6 +24,7 @@ export class CartService {
       total: subtotal + shipping - discount
     }
   })
+  
   getCart(id: string) {
     return this.http.get<Cart>(this.baseUrl + "cart?id=" + id).pipe(
       map(cart => {
