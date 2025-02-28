@@ -22,7 +22,7 @@ public class OrdersController(ICartService cartService, IUnitOfWork unit, UserMa
         if (user == null || string.IsNullOrEmpty(user.Email))
             return Unauthorized("User email not found");
 
-        var userEmail = user.Email;
+        var userEmail = User.GetEmail();
 
         var cart = await cartService.GetCartAsync(orderDto.CartId);
 
