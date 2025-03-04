@@ -36,7 +36,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.x'
+          dotnet-version: '8.x'
 
       - name: Build with dotnet
         run: dotnet build ${{env.PROJECT_PATH}} --configuration Release
@@ -71,11 +71,3 @@ jobs:
             client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BCE25D2474E04910A2BA3419AC3E36F1 }}
             tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4B1E6881686249F4AFC521BEC2FC7098 }}
             subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4A984C5133B24B6EA221FD24AB28F454 }}
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'ecommerce-test'
-          slot-name: 'Production'
-          package: .
-          
