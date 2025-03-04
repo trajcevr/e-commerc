@@ -43,5 +43,6 @@ export interface Order {
     deliveryMethodId: number
     shippingAddress: ShippingAddress
     paymentSummary: PaymentSummary
+    discount: number
   }
   

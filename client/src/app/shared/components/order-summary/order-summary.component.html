@@ -38,15 +38,35 @@
         
     </div>
     <div class="space-y-4 rounded-lg border border-gray-200 bg-white shadow-sm">
-        <form class="space-y-2 flex flex-col p-2">
-            <label class="mb-2 block text-sm font-mediem">
-                Do you have a voucher code?
-            </label>
-            <mat-form-field appearance="outline">
-                <mat-label>Voucher code</mat-label>
-                <input type="text" matInput>
-            </mat-form-field>
-            <button mat-flat-button>Apply code</button>
+        <form class="space-y-2 flex flex-col p-2" (ngSubmit)="applyCouponCode()">
+          <label class="mb-2 block text-sm font-medium">
+            Do you have a voucher code?
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-label>Voucher code</mat-label>
+            <input 
+              type="text" 
+              matInput 
+              [(ngModel)]="couponCode" 
+              name="couponCode" 
+              [disabled]="couponApplied" 
+              placeholder="Enter coupon code"
+            >
+          </mat-form-field>
+          <button 
+            mat-flat-button 
+            [disabled]="couponApplied" 
+            type="submit"
+          >
+            Apply code
+          </button>
         </form>
-    </div>
+      
+        <div *ngIf="couponApplied" class="flex items-center justify-between p-2 border-t border-gray-200">
+          <button mat-icon-button (click)="removeCouponCode()">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+      
 </div>
