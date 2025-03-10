@@ -1,13 +1,10 @@
 using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
 using API.DTOs;
 using API.Extensions;
 using Core.Entities;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -63,7 +60,8 @@ namespace API.Controllers
                 user.FirstName,
                 user.LastName,
                 user.Email,
-                Address = user.Address?.ToDto()
+                Address = user.Address?.ToDto(),
+                Roles = User.FindFirstValue(ClaimTypes.Role)
             });
         }
 

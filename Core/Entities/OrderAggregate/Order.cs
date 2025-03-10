@@ -1,8 +1,9 @@
 using Core.Entites;
+using Core.Interfaces;
 
 namespace Core.Entities.OrderAggregate;
 
-public class Order : BaseEntity
+public class Order : BaseEntity, IDtoConvertible
 {
     public DateTime OrderDate { get; set; } = DateTime.UtcNow;
     public required string BuyerEmail { get; set; }
@@ -16,6 +17,6 @@ public class Order : BaseEntity
     public decimal Discount { get; set; }
     public decimal GetTotal()
     {
-        return SubTotal + DeliveryMethod.Price - Discount;
+        return SubTotal - Discount + DeliveryMethod.Price ;
     }
 }
